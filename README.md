@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <h3><b>Math Magician Project</b></h3>
+  <h3><b>Book Store Project</b></h3>
 
 </div>
 
@@ -27,9 +27,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Math Magician Project <a name="about-project"></a>
+# 📖 Book Store Project <a name="about-project"></a>
 
-**Math Magician Project:** is a project  offering a user-friendly platform for using a calculator, with features like basic calculation operations. It provides an engaging and interactive experience.
+**Book Store Project:** is a project  offering a user-friendly platform for storing books, keeping track of the reading progress and allows you to delete a book once your are done. It provides an engaging and interactive experience.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -44,7 +44,7 @@
 ### Key Features <a name="key-features"></a>
 
 - [x] **Single Page App**
-- [x] **Basic Math operations**
+- [x] **Items storage**
 - [x] **Medium Fidelity Design**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -70,7 +70,7 @@ In order to run this project you need:
 
 ```
    ssh code:
-   git@github.com:BenM4k/math_magician_.git
+   git@github.com:BenM4k/react-bookstore.git
 ```
 
 ### Setup
@@ -79,7 +79,7 @@ Clone this repository to your desired folder:
 
 ```
   cd desired-folder
-  git clone git@github.com:BenM4k/math_magician_.git
+  git clone git@github.com:BenM4k/react-bookstore.git
 ```
 
 ### Deployment
