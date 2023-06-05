@@ -5,8 +5,8 @@ import NavBar from './NavBar';
 function Layout() {
   return (
     <div>
-        <NavBar />
-        <Outlet />
+      <NavBar />
+      <Outlet />
     </div>
   );
 }

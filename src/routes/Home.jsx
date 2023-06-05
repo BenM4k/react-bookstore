@@ -4,7 +4,7 @@ import Books from '../components/Books';
 function Home() {
   return (
     <div>
-        <Books />
+      <Books />
     </div>
   );
 }
