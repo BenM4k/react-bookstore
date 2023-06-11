@@ -1,13 +1,17 @@
+import { useDispatch } from 'react-redux';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { deleteBook } from '../redux/slices/books/bookSlice';
 
-function BookList({ books, handleDelete }) {
+function BookList({ books }) {
+  const dispatch = useDispatch();
+
   return (
     <ul>
       {books.map((book) => (
         <>
           <li
-            key={book.title}
+            key={book.item_id}
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -26,7 +30,7 @@ function BookList({ books, handleDelete }) {
               }}
               >
                 <button type="submit">Comments</button>
-                <button onClick={() => handleDelete(book.title)} type="submit">Remove</button>
+                <button onClick={() => dispatch(deleteBook(book.item_id))} type="submit">Remove</button>
                 <button type="submit">Edit</button>
               </div>
             </div>
@@ -60,7 +64,6 @@ function BookList({ books, handleDelete }) {
 
 BookList.propTypes = {
   books: PropTypes.arrayOf().isRequired,
-  handleDelete: PropTypes.func.isRequired,
 };
 
 export default BookList;
