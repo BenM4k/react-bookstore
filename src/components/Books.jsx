@@ -1,34 +1,18 @@
+import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import BookList from './BookList';
+import { addBook } from '../redux/slices/books/bookSlice';
 
 function Books() {
-  const [books, setBooks] = useState([
-    {
-      title: 'Fantastic Beasts And Where To find them',
-      author: 'J. K. Rowling',
-      category: 'action',
-      chapter: 'Chapter 17',
-    },
-    {
-      title: 'The Hunger games',
-      author: 'Suzanne Collins',
-      category: 'action',
-      chapter: 'Chapter 3',
-    },
-    {
-      title: 'Jurassic Parc',
-      author: 'Michael Crichton',
-      category: 'sci-fi',
-      chapter: 'Introduction',
-    },
-  ]);
-  const handleDelete = (title) => {
-    const newBookList = books.filter((book) => book.title !== title);
-    setBooks(newBookList);
-  };
+  const { books } = useSelector((store) => store.book);
+  const dispatch = useDispatch();
+  const [author, setAuthor] = useState('');
+  const [title, setTitle] = useState('');
+  const [cat, setCat] = useState('Fiction');
+
   return (
     <div>
-      <BookList books={books} handleDelete={handleDelete} />
+      <BookList books={books} />
       <div style={{
         width: '100%',
         background: 'black',
@@ -40,13 +24,48 @@ function Books() {
       <form>
         <h1>ADD NEW BOOK</h1>
         <div>
-          <input type="text" />
-          <select>
-            <option value="action" selected>Action</option>
-            <option value="sci-fi">Sci-Fi</option>
-            <option value="Economy">Economy</option>
+          <input
+            type="text"
+            value={author}
+            placeholder="author"
+            onChange={(e) => setAuthor(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            value={title}
+            placeholder="title"
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <select
+            value={author}
+            onChange={(e) => setCat(e.target.value)}
+          >
+            <option value="action">Fiction</option>
+            <option value="sci-fi">Nonfiction</option>
+            <option value="Economy">Drama</option>
           </select>
-          <button type="submit">ADD BOOK</button>
+          <button
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+
+              if (author !== '' && title !== '') {
+                const book = {
+                  item_id: `item${books.length + 1}`,
+                  title,
+                  author,
+                  category: cat,
+                };
+                dispatch(addBook(book));
+                setAuthor('');
+                setTitle('');
+              }
+            }}
+          >
+            ADD BOOK
+          </button>
         </div>
       </form>
     </div>
