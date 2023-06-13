@@ -49,6 +49,7 @@ export const postBook = createAsyncThunk('postBooks/postBook', async (book, thun
     });
 
     if (resp.status === 201) {
+      thunkAPI.dispatch(getBooks());
       return null;
     }
     return null;
@@ -67,6 +68,7 @@ export const deleteBook = createAsyncThunk('books/deleteBook', async (itemId, th
     });
 
     if (res.status === 201) {
+      thunkAPI.dispatch(getBooks());
       return null;
     }
     return null;
