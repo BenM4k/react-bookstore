@@ -22,7 +22,7 @@ function NavBar() {
     }}
     >
       <h1 style={{
-        color: '#0e62e5',
+        color: '#379cf6',
         fontSize: '1.8em',
       }}
       >

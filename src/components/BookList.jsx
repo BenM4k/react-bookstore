@@ -69,13 +69,14 @@ function BookList() {
                 fontWeight: 'bold',
                 fontSize: '1.3em',
                 marginTop: '.3em',
+                color: '#121212',
               }}
             >
               {bookItem.title}
             </h2>
             <p
               style={{
-                color: '#b6d0e6',
+                color: '#4386bf',
               }}
             >
               {bookItem.author}
@@ -87,7 +88,7 @@ function BookList() {
                   marginRight: '.8em',
                   paddingRight: '.8em',
                   borderRight: '2px solid #e9e8e8',
-                  color: '#b6d0e6',
+                  color: '#4386bf',
                   cursor: 'pointer',
                 }}
               >
@@ -99,7 +100,7 @@ function BookList() {
                   marginRight: '.8em',
                   paddingRight: '.8em',
                   borderRight: '2px solid #e9e8e8',
-                  color: '#b6d0e6',
+                  color: '#4386bf',
                   cursor: 'pointer',
                 }}
                 onClick={() => {
@@ -111,7 +112,7 @@ function BookList() {
               <button
                 type="button"
                 style={{
-                  color: '#b6d0e6',
+                  color: '#4386bf',
                   cursor: 'pointer',
                 }}
               >
