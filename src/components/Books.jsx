@@ -12,20 +12,44 @@ function Books() {
   const [cat, setCat] = useState('Fiction');
 
   return (
-    <div>
-      <BookList />
-      <div style={{
-        width: '100%',
-        background: 'black',
-        height: '2px',
-        marginTop: '10px',
-        marginBottom: '10px',
+    <div
+      className="books"
+      style={{
+        padding: '2em 3em',
       }}
-      />
-      <form>
-        <h1>ADD NEW BOOK</h1>
-        <div>
+    >
+      <BookList />
+      <form
+        style={{
+          marginTop: '1em',
+          padding: '0 5em',
+        }}
+        className="form"
+      >
+        <div
+          style={{
+            border: '1px solid #e9e8e8',
+          }}
+        />
+        <h1
+          style={{
+            color: 'gray',
+            fontSize: '1.4em',
+            marginBottom: '0.5em',
+            marginTop: '0.5em',
+          }}
+        >
+          ADD NEW BOOK
+        </h1>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            gap: '1em',
+          }}
+        >
           <input
+            className="author"
             type="text"
             value={author}
             placeholder="author"
@@ -37,17 +61,24 @@ function Books() {
             value={title}
             placeholder="title"
             onChange={(e) => setTitle(e.target.value)}
+            style={{
+              border: 'none',
+              padding: '.5em',
+              flex: 1,
+            }}
             required
           />
           <select
-            value={author}
+            className="select"
+            value={cat}
             onChange={(e) => setCat(e.target.value)}
           >
             <option value="action">Fiction</option>
             <option value="sci-fi">Nonfiction</option>
-            <option value="Economy">Drama</option>
+            <option value="drama">Drama</option>
           </select>
           <button
+            className="submit"
             type="submit"
             onClick={async (e) => {
               e.preventDefault();

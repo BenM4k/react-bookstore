@@ -3,13 +3,28 @@ import React from 'react';
 import { deleteBook } from '../redux/slices/books/bookSlice';
 
 function BookList() {
+  function getRandomNumber(numbers) {
+    const randomIndex = Math.floor(Math.random() * numbers.length);
+    return numbers[randomIndex];
+  }
+  const numbers = [8, 64, 0];
+  const randomValue = getRandomNumber(numbers);
   const {
     books, isLoading, errorMsg,
   } = useSelector((store) => store.book);
   const dispatch = useDispatch();
   if (isLoading) {
     return (
-      <div style={{ marginTop: '50px' }}>Loading...</div>
+      <div className="lds-roller">
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
     );
   }
 
@@ -20,28 +35,113 @@ function BookList() {
   }
 
   return (
-    <ul>
+    <ul
+      style={{
+        padding: '0 5em',
+        overflow: 'auto',
+        maxHeight: '265px',
+      }}
+    >
       {Object.entries(books).map(([id, book]) => book.map((bookItem) => (
-        <li key={id}>
+        <li
+          key={id}
+          style={{
+            background: '#fff',
+            padding: '1em',
+            marginBottom: '1em',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
           <div>
-            <p>{bookItem.category}</p>
-            <h2>{bookItem.title}</h2>
-            <p>{bookItem.author}</p>
+            <p
+              style={{
+                color: 'gray',
+                fontWeight: 'bold',
+                fontSize: '.9em',
+              }}
+            >
+              {bookItem.category}
+            </p>
+            <h2
+              style={{
+                fontWeight: 'bold',
+                fontSize: '1.3em',
+                marginTop: '.3em',
+              }}
+            >
+              {bookItem.title}
+            </h2>
+            <p
+              style={{
+                color: '#b6d0e6',
+              }}
+            >
+              {bookItem.author}
+            </p>
             <div>
-              <button type="button">edit</button>
               <button
                 type="button"
+                style={{
+                  marginRight: '.8em',
+                  paddingRight: '.8em',
+                  borderRight: '2px solid #e9e8e8',
+                  color: '#b6d0e6',
+                  cursor: 'pointer',
+                }}
+              >
+                edit
+              </button>
+              <button
+                type="button"
+                style={{
+                  marginRight: '.8em',
+                  paddingRight: '.8em',
+                  borderRight: '2px solid #e9e8e8',
+                  color: '#b6d0e6',
+                  cursor: 'pointer',
+                }}
                 onClick={() => {
                   dispatch(deleteBook(id));
                 }}
               >
                 delete
               </button>
-              <button type="button">comment</button>
+              <button
+                type="button"
+                style={{
+                  color: '#b6d0e6',
+                  cursor: 'pointer',
+                }}
+              >
+                comment
+              </button>
             </div>
           </div>
-          <div>
-            <div />
+          <div className="progress">
+            <div style={{
+              display: 'flex',
+              gap: '1em',
+            }}
+            >
+              <div className="progress-bar">
+                <div className="progresss" />
+              </div>
+              <p style={{ textAlign: 'center', color: 'gray' }}>
+                <span style={{ fontSize: '2.2em', color: 'black' }}>
+                  {randomValue}
+                  %
+                </span>
+                <br />
+                Completed
+              </p>
+            </div>
+            <div className="infos">
+              <p className="current-chapter">Current chapter</p>
+              <h3 className="chapter">chapter 17</h3>
+              <button type="button" className="update">update progress</button>
+            </div>
           </div>
         </li>
       )))}
