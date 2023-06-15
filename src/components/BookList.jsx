@@ -3,12 +3,57 @@ import React from 'react';
 import { deleteBook } from '../redux/slices/books/bookSlice';
 
 function BookList() {
-  function getRandomNumber(numbers) {
-    const randomIndex = Math.floor(Math.random() * numbers.length);
-    return numbers[randomIndex];
-  }
-  const numbers = [8, 64, 0];
-  const randomValue = getRandomNumber(numbers);
+  const ulStyle = {
+    padding: '0 5em',
+    overflow: 'auto',
+    maxHeight: '265px',
+  };
+  const liStyle = {
+    background: '#fff',
+    padding: '1em',
+    marginBottom: '1em',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  };
+  const catStyle = {
+    color: 'gray',
+    fontWeight: 'bold',
+    fontSize: '.9em',
+  };
+  const authorStyle = {
+    color: '#4386bf',
+  };
+  const titleStyle = {
+    fontWeight: 'bold',
+    fontSize: '1.3em',
+    marginTop: '.3em',
+    color: '#121212',
+  };
+  const editStyle = {
+    marginRight: '.8em',
+    paddingRight: '.8em',
+    borderRight: '2px solid #e9e8e8',
+    color: '#4386bf',
+    cursor: 'pointer',
+  };
+  const deleteStyle = {
+    marginRight: '.8em',
+    paddingRight: '.8em',
+    borderRight: '2px solid #e9e8e8',
+    color: '#4386bf',
+    cursor: 'pointer',
+  };
+  const commentStyle = {
+    color: '#4386bf',
+    cursor: 'pointer',
+  };
+  const div1Style = {
+    display: 'flex',
+    gap: '1em',
+  };
+  const div1pStyle = { textAlign: 'center', color: 'gray' };
+  const div1spanStyle = { fontSize: '2.2em', color: 'black' };
   const {
     books, isLoading, errorMsg,
   } = useSelector((store) => store.book);
@@ -30,79 +75,39 @@ function BookList() {
 
   if (errorMsg) {
     return (
-      <div style={{ marginTop: '50px' }}>Failed to fetch</div>
+      <div className="error">Failed to fetch</div>
     );
   }
 
   return (
-    <ul
-      style={{
-        padding: '0 5em',
-        overflow: 'auto',
-        maxHeight: '265px',
-      }}
-    >
+    <ul style={ulStyle}>
       {Object.entries(books).map(([id, book]) => book.map((bookItem) => (
         <li
           key={id}
-          style={{
-            background: '#fff',
-            padding: '1em',
-            marginBottom: '1em',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
+          style={liStyle}
         >
           <div>
-            <p
-              style={{
-                color: 'gray',
-                fontWeight: 'bold',
-                fontSize: '.9em',
-              }}
-            >
+            <p style={catStyle}>
               {bookItem.category}
             </p>
-            <h2
-              style={{
-                fontWeight: 'bold',
-                fontSize: '1.3em',
-                marginTop: '.3em',
-                color: '#121212',
-              }}
-            >
+            <h2 style={titleStyle}>
               {bookItem.title}
             </h2>
             <p
-              style={{
-                color: '#4386bf',
-              }}
+              style={authorStyle}
             >
               {bookItem.author}
             </p>
             <div>
               <button
                 type="button"
-                style={{
-                  marginRight: '.8em',
-                  paddingRight: '.8em',
-                  borderRight: '2px solid #e9e8e8',
-                  color: '#4386bf',
-                  cursor: 'pointer',
-                }}
+                style={editStyle}
               >
                 edit
               </button>
               <button
                 type="button"
-                style={{
-                  marginRight: '.8em',
-                  paddingRight: '.8em',
-                  borderRight: '2px solid #e9e8e8',
-                  color: '#4386bf',
-                  cursor: 'pointer',
-                }}
+                style={deleteStyle}
                 onClick={() => {
                   dispatch(deleteBook(id));
                 }}
@@ -111,28 +116,20 @@ function BookList() {
               </button>
               <button
                 type="button"
-                style={{
-                  color: '#4386bf',
-                  cursor: 'pointer',
-                }}
+                style={commentStyle}
               >
                 comment
               </button>
             </div>
           </div>
           <div className="progress">
-            <div style={{
-              display: 'flex',
-              gap: '1em',
-            }}
-            >
+            <div style={div1Style}>
               <div className="progress-bar">
                 <div className="progresss" />
               </div>
-              <p style={{ textAlign: 'center', color: 'gray' }}>
-                <span style={{ fontSize: '2.2em', color: 'black' }}>
-                  {randomValue}
-                  %
+              <p style={div1pStyle}>
+                <span style={div1spanStyle}>
+                  64%
                 </span>
                 <br />
                 Completed

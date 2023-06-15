@@ -12,42 +12,14 @@ function Books() {
   const [cat, setCat] = useState('Fiction');
 
   return (
-    <div
-      className="books"
-      style={{
-        padding: '2em 3em',
-      }}
-    >
+    <div className="books">
       <BookList />
-      <form
-        style={{
-          marginTop: '1em',
-          padding: '0 5em',
-        }}
-        className="form"
-      >
-        <div
-          style={{
-            border: '1px solid #e9e8e8',
-          }}
-        />
-        <h1
-          style={{
-            color: 'gray',
-            fontSize: '1.4em',
-            marginBottom: '0.5em',
-            marginTop: '0.5em',
-          }}
-        >
+      <form className="form">
+        <div className="form-line" />
+        <h1 className="form-title">
           ADD NEW BOOK
         </h1>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            gap: '1em',
-          }}
-        >
+        <div className="form-body">
           <input
             className="author"
             type="text"

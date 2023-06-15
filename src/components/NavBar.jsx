@@ -2,6 +2,30 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 function NavBar() {
+  const navStyle = {
+    background: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    padding: '1.5em 5em',
+    gap: '1.5em',
+  };
+  const h1Style = {
+    color: '#379cf6',
+    fontSize: '1.8em',
+  };
+  const ulStyle = {
+    display: 'flex',
+    gap: '1em',
+  };
+  const liStyle = {
+    textDecoration: 'none',
+    listStyleType: 'none',
+  };
+  const navLinkStyle = {
+    textDecoration: 'none',
+    textTransform: 'uppercase',
+    fontSize: '.9em',
+  };
   const links = [
     {
       name: 'home',
@@ -13,41 +37,19 @@ function NavBar() {
     },
   ];
   return (
-    <nav style={{
-      background: 'white',
-      display: 'flex',
-      alignItems: 'center',
-      padding: '1.5em 5em',
-      gap: '1.5em',
-    }}
-    >
-      <h1 style={{
-        color: '#379cf6',
-        fontSize: '1.8em',
-      }}
-      >
+    <nav style={navStyle}>
+      <h1 style={h1Style}>
         Bee&apos;s Bookstore
       </h1>
-      <ul style={{
-        display: 'flex',
-        gap: '1em',
-      }}
-      >
+      <ul style={ulStyle}>
         {links.map((link) => (
           <li
             key={link.name}
-            style={{
-              textDecoration: 'none',
-              listStyleType: 'none',
-            }}
+            style={liStyle}
           >
             <NavLink
               to={link.path}
-              style={{
-                textDecoration: 'none',
-                textTransform: 'uppercase',
-                fontSize: '.9em',
-              }}
+              style={navLinkStyle}
             >
               {link.name}
             </NavLink>
