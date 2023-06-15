@@ -12,20 +12,16 @@ function Books() {
   const [cat, setCat] = useState('Fiction');
 
   return (
-    <div>
+    <div className="books">
       <BookList />
-      <div style={{
-        width: '100%',
-        background: 'black',
-        height: '2px',
-        marginTop: '10px',
-        marginBottom: '10px',
-      }}
-      />
-      <form>
-        <h1>ADD NEW BOOK</h1>
-        <div>
+      <form className="form">
+        <div className="form-line" />
+        <h1 className="form-title">
+          ADD NEW BOOK
+        </h1>
+        <div className="form-body">
           <input
+            className="author"
             type="text"
             value={author}
             placeholder="author"
@@ -37,17 +33,24 @@ function Books() {
             value={title}
             placeholder="title"
             onChange={(e) => setTitle(e.target.value)}
+            style={{
+              border: 'none',
+              padding: '.5em',
+              flex: 1,
+            }}
             required
           />
           <select
-            value={author}
+            className="select"
+            value={cat}
             onChange={(e) => setCat(e.target.value)}
           >
             <option value="action">Fiction</option>
             <option value="sci-fi">Nonfiction</option>
-            <option value="Economy">Drama</option>
+            <option value="drama">Drama</option>
           </select>
           <button
+            className="submit"
             type="submit"
             onClick={async (e) => {
               e.preventDefault();
